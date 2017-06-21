@@ -2,10 +2,10 @@
 
 namespace Infrastructure
 {
-    [Table("Users")]
+    
 	public class Customer
 	{
-        [Key]
+
 		public long Id
 		{
 			get;
