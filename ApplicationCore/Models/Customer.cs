@@ -1,6 +1,6 @@
-﻿using System;
+﻿﻿using System;
 
-namespace Infrastructure
+namespace ApplicationCore.Models
 {
     
 	public class Customer

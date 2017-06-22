@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using Dapper;
 using System.Linq;
 using Npgsql;
+using ApplicationCore.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure
 {
@@ -12,9 +14,10 @@ namespace Infrastructure
 
 	{
 		private string connectionString;
-		public CrudDapper()
+		public CrudDapper(IConfiguration configuration)
 		{
-			connectionString = @"Server=10.211.55.3;Port=5432;Database=postgres;Userid=postgres;Password=12345;Pooling=true;MinPoolSize=1;MaxPoolSize=20";
+            connectionString = configuration.GetConnectionString("DefaultConnection");
+            //connectionString = @"Server=10.211.55.3;Port=5432;Database=postgres;Userid=postgres;Password=12345;Pooling=true;MinPoolSize=1;MaxPoolSize=20";
 		}
 
 		public IDbConnection Connection

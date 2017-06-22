@@ -2,24 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApplicationCore.Models;
 using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace WebLayer.Controllers
 {
     public class HomeController : Controller
     {
+
+        public HomeController (IConfigurationRoot configuration)
+        {
+
+            CrudDapper a = new CrudDapper(configuration);
+        }
         public IActionResult Index()
         {
-            CrudDapper crudDapper = new CrudDapper();
-            Customer cus = new Customer()
-            {
-                CreateTime = DateTime.Now,
-                Email = "ymcr11@gmail.com",
-                FirstName = "yura",
-                LastName = "Albarracin"
-            };
-            crudDapper.Add(cus);
+            
             return View();
         }
 
