@@ -4,22 +4,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using ApplicationCore.Models;
 using Infrastructure;
+using Infrastructure.Logging;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace WebLayer.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
 
-        public HomeController (IConfigurationRoot configuration)
+        public HomeController (IConfigurationRoot configuration,ILogger<HomeController> logger)
         {
 
             CrudDapper a = new CrudDapper(configuration);
+            _logger = logger;
         }
         public IActionResult Index()
         {
-            
+            _logger.LogWarning("aaasa");
             return View();
         }
 

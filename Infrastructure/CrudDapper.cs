@@ -7,6 +7,8 @@ using System.Linq;
 using Npgsql;
 using ApplicationCore.Models;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using NLog;
 
 namespace Infrastructure
 {
@@ -14,10 +16,14 @@ namespace Infrastructure
 
 	{
 		private string connectionString;
+       
 		public CrudDapper(IConfiguration configuration)
 		{
             connectionString = configuration.GetConnectionString("DefaultConnection");
             //connectionString = @"Server=10.211.55.3;Port=5432;Database=postgres;Userid=postgres;Password=12345;Pooling=true;MinPoolSize=1;MaxPoolSize=20";
+            Logger logger = LogManager.GetCurrentClassLogger();
+
+            logger.Warn("hola mundo "+Guid.NewGuid());
 		}
 
 		public IDbConnection Connection
