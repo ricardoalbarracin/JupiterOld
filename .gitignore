@@ -198,3 +198,4 @@ FakesAssemblies/
 
 *.dll
 smb*/
+*.DS_Store*

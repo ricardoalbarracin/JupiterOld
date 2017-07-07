@@ -15,9 +15,9 @@ namespace WebLayer.Middleware
 
 		public async Task Invoke(HttpContext context)
 		{
-            //var SessionId = context.Session.Id;
+            var SessionId = context.Session.Id;
 
-            //context.Response.Headers.Add("SessionId", SessionId);
+            context.Response.Headers.Add("SessionId", SessionId);
             await _next.Invoke(context);
 		}
     }

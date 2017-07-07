@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using System.Text;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using NLog;
-using NLog.LayoutRenderers;
-using NLog.Web.LayoutRenderers;
 
 namespace Infrastructure.Logging
 {
@@ -16,7 +12,7 @@ namespace Infrastructure.Logging
     {
         Logger _logger;
         IHttpContextAccessor _IHttpContextAccessor; 
-        public LoggerAdapter(ILogger<LoggerAdapter> logger,IHttpContextAccessor httpContextAccessor)
+        public LoggerAdapter(IHttpContextAccessor httpContextAccessor)
         {
             _IHttpContextAccessor = httpContextAccessor;
             _logger = LogManager.GetCurrentClassLogger();
@@ -26,14 +22,27 @@ namespace Infrastructure.Logging
         {
             var logEvent = new LogEventInfo();
             logEvent.Message = message;
-
+            logEvent.Level = LogLevel.Trace;
             var target = Environment.StackTrace.Split('\n')[3].Trim();
             logEvent.Properties["Target"] =   target;
 			logEvent.Properties["InputArguments"] = GetSerilizeArguments(inputParameters);
 			logEvent.Properties["OutputArguments"] = GetSerilizeArguments(outputParameters);
             logEvent.Properties["SessionId"] = _IHttpContextAccessor.HttpContext.Session.Id;
-
             _logger.Trace(logEvent);
+        }
+
+        public void LogError(string message, Exception ex)
+        {
+            var logEvent = new LogEventInfo();
+            logEvent.Message = message;
+            logEvent.Level = LogLevel.Error;
+            logEvent.Message = ex.Message;
+            logEvent.Exception = ex;
+            var target = Environment.StackTrace.Split('\n')[3].Trim();
+            logEvent.Properties["Target"] = target;
+
+            logEvent.Properties["SessionId"] = _IHttpContextAccessor.HttpContext.Session.Id;
+            _logger.Error(ex, message);
         }
 
 

@@ -15,8 +15,9 @@ namespace WebLayer.Middleware
 
 		public async Task Invoke(HttpContext context)
 		{
+            
             var TraceId = context.TraceIdentifier;
-            context.Response.Headers.Add("TraceId", TraceId);
+            context.Response.Headers.Add("TraceId", TraceId );
             await _next.Invoke(context);
 		}
     }

@@ -19,17 +19,17 @@ namespace WebLayer.Controllers
 	
     public class HomeController : Controller
     {
-        
+        ICrudCustomerBL _bl;
         public HomeController (ICrudCustomerBL bl)
         {
-            var asaaa= bl.GetListCustomer().Result[0];
+            _bl = bl;
 
         }
         public IActionResult Index()
         {
             HttpContext.Session.Set("dfs", new byte[0]);
 
-
+			var asaaa = _bl.GetListCustomer().Result[0];
             return View();
         }
 
@@ -43,7 +43,8 @@ namespace WebLayer.Controllers
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
-
+            int b=0;
+            int a = 1 /b;
             return View();
         }
 

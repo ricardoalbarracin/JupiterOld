@@ -1,15 +1,8 @@
 ﻿﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using Dapper;
-using System.Linq;
 using Npgsql;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using NLog;
-//using Infrastructure.Logging;
-using System.Linq.Expressions;
 using Microsoft.AspNetCore.Http;
 using ApplicationCore.Gen.Models;
 using Infrastructure.Logging;

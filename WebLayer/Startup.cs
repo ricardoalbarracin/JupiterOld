@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ApplicationCore.Seg.BL;
 using ApplicationCore.Seg.Services;
 using Infrastructure;
 using Infrastructure.DAL;
 using Infrastructure.Logging;
-//using Infrastructure.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -17,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using NLog.Config;
 using NLog.Extensions.Logging;
 using NLog.Web;
+using WebLayer.Fliters;
 using WebLayer.Middleware;
 
 namespace WebLayer
@@ -40,7 +37,12 @@ namespace WebLayer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-			
+			// Add framework services.
+			services.AddMvc(options =>
+			{
+				options.Filters.Add(typeof(FilterAllActions));
+                options.Filters.Add(typeof(GlobalExceptionFilter));
+			});
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 			services.AddSingleton(provider => Configuration);
             services.AddScoped<ICrudCustomerBL, CrudCustomerBL>();
@@ -48,8 +50,8 @@ namespace WebLayer
             services.AddScoped<IDapperAdapter, DapperAdapter>();
 
 
-			// Add framework services.
-			services.AddMvc();
+			
+
 			// Adds a default in-memory implementation of IDistributedCache.
 			services.AddDistributedMemoryCache();
 			
@@ -89,6 +91,8 @@ namespace WebLayer
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+               
+                
             });
 			app.AddNLogWeb();
 			loggerFactory.AddNLog();
