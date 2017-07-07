@@ -5,10 +5,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="Seg\" />
+    <Folder Include="Seg\Models\" />
+    <Folder Include="Seg\BL\" />
+    <Folder Include="Seg\Services\" />
+    <Folder Include="Gen\" />
+    <Folder Include="Gen\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Class1.cs" />
     <Compile Remove="Entities\EmptyClass.cs" />
+    <Compile Remove="SEG\Models\EmptyClass2.cs" />
+    <Compile Remove="SEG\EmptyClass.cs" />
+    <Compile Remove="Seg\BL\EmptyClass.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.4.0-preview2-25405-01" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,5 @@
 ﻿using System;
-namespace ApplicationCore.Models
+namespace ApplicationCore.Seg.BL
 {
     public class EmptyClass
     {

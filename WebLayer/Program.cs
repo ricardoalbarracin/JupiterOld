@@ -11,15 +11,23 @@ namespace WebLayer
     {
         public static void Main(string[] args)
         {
-            var host = new WebHostBuilder()
-                .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
-                .UseStartup<Startup>()
-                .UseApplicationInsights()
-                .Build();
+            try
+            {
+				var host = new WebHostBuilder()
+				.UseKestrel()
+				.UseContentRoot(Directory.GetCurrentDirectory())
+				.UseIISIntegration()
+				.UseStartup<Startup>()
+				.UseApplicationInsights()
+				.Build();
 
-            host.Run();
+				host.Run();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
+
         }
     }
 }

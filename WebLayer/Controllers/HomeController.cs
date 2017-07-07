@@ -1,29 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using ApplicationCore.Models;
+using ApplicationCore.Seg.BL;
+using ApplicationCore.Seg.Services;
 using Infrastructure;
 using Infrastructure.Logging;
+//using Infrastructure.Logging;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace WebLayer.Controllers
 {
+
+
+	
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController (IConfigurationRoot configuration,ILogger<HomeController> logger)
+        
+        public HomeController (ICrudCustomerBL bl)
         {
+            var asaaa= bl.GetListCustomer().Result[0];
 
-            CrudDapper a = new CrudDapper(configuration);
-            _logger = logger;
         }
         public IActionResult Index()
         {
-            _logger.LogWarning("aaasa");
+            HttpContext.Session.Set("dfs", new byte[0]);
+
+
             return View();
         }
 
