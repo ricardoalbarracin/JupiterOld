@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace WebLayer.Fliters
 {
-	public class FilterAllActions : IActionFilter, IResultFilter
+	public class GlobalActionsFilter : IActionFilter, IResultFilter
 	{
 		private readonly ILoggerAdapter _loggerAdapter;
-		public FilterAllActions(ILoggerAdapter loggerAdapter)
+		public GlobalActionsFilter(ILoggerAdapter loggerAdapter)
 		{
 			_loggerAdapter = loggerAdapter;
 		}
@@ -35,7 +35,7 @@ namespace WebLayer.Fliters
 				var controllerName = controllerActionDescriptor.ControllerName;
 				this.actionExecutingFilterContext = filterContext;
 				this.target = controllerActionDescriptor.ControllerTypeInfo.FullName + "." + actionName;
-                _loggerAdapter.LogTrace("xxxxxxx",filterContext.ActionArguments);
+                _loggerAdapter.LogTrace("XXXXXX",filterContext.ActionArguments);
             }
 		}
 

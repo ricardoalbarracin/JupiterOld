@@ -38,14 +38,11 @@ namespace Infrastructure.Logging
             logEvent.Level = LogLevel.Error;
             logEvent.Message = ex.Message;
             logEvent.Exception = ex;
-            var target = Environment.StackTrace.Split('\n')[3].Trim();
+            var target = ex.StackTrace.Split('\n')[0];
             logEvent.Properties["Target"] = target;
-
             logEvent.Properties["SessionId"] = _IHttpContextAccessor.HttpContext.Session.Id;
             _logger.Error(ex, message);
         }
-
-
 
         /// <summary>
         /// Metodo que retorna los argumentos en formato json, validando su tamaño previamente para evitar conflictos con el sistema de logs

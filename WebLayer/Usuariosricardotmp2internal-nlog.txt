@@ -1,6 +1,0 @@
-2017-07-07 00:30:01.0251 Error Parsing configuration from /Users/ricardo/Documents/Codigo Visual/Jupiter/WebLayer/bin/Debug/netcoreapp1.1/NLog.config failed. Exception: NLog.NLogConfigurationException: Exception when parsing /Users/ricardo/Documents/Codigo Visual/Jupiter/WebLayer/bin/Debug/netcoreapp1.1/NLog.config.  ---> NLog.NLogConfigurationException: Target blackhole not found.
-   at NLog.Config.XmlLoggingConfiguration.ParseLoggerElement(NLogXmlElement loggerElement, IList`1 rulesCollection)
-   at NLog.Config.XmlLoggingConfiguration.ParseRulesElement(NLogXmlElement rulesElement, IList`1 rulesCollection)
-   at NLog.Config.XmlLoggingConfiguration.ParseNLogElement(NLogXmlElement nlogElement, String filePath, Boolean autoReloadDefault)
-   at NLog.Config.XmlLoggingConfiguration.Initialize(XmlReader reader, String fileName, Boolean ignoreErrors)
-   --- End of inner exception stack trace ---

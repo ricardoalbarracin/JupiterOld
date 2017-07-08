@@ -40,7 +40,7 @@ namespace WebLayer
 			// Add framework services.
 			services.AddMvc(options =>
 			{
-				options.Filters.Add(typeof(FilterAllActions));
+				options.Filters.Add(typeof(GlobalActionsFilter));
                 options.Filters.Add(typeof(GlobalExceptionFilter));
 			});
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
