@@ -11,6 +11,7 @@ using Infrastructure.Logging;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using WebLayer.Fliters;
 
 namespace WebLayer.Controllers
 {
@@ -25,6 +26,8 @@ namespace WebLayer.Controllers
             _bl = bl;
 
         }
+
+        [HasPermissionAttribute("")]
         public IActionResult Index()
         {
             HttpContext.Session.Set("dfs", new byte[0]);

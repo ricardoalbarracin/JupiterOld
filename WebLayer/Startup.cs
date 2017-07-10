@@ -7,6 +7,7 @@ using Infrastructure.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -40,8 +41,9 @@ namespace WebLayer
 			// Add framework services.
 			services.AddMvc(options =>
 			{
-				options.Filters.Add(typeof(GlobalActionsFilter));
+				options.Filters.Add(typeof(FilterAllActions));
                 options.Filters.Add(typeof(GlobalExceptionFilter));
+
 			});
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 			services.AddSingleton(provider => Configuration);
@@ -49,11 +51,8 @@ namespace WebLayer
             services.AddScoped<ILoggerAdapter, LoggerAdapter>();
             services.AddScoped<IDapperAdapter, DapperAdapter>();
 
-
-			
-
 			// Adds a default in-memory implementation of IDistributedCache.
-			services.AddDistributedMemoryCache();
+			//services.AddDistributedMemoryCache();
 			
             services.AddSession(options =>
 			{
@@ -65,6 +64,7 @@ namespace WebLayer
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+           
             app.UseSession();
 			
             ConfigurationItemFactory.Default.LayoutRenderers.RegisterDefinition("trace-id", typeof(Infrastructure.Logging.AspNetTraceIdLayoutRenderer));
@@ -81,8 +81,6 @@ namespace WebLayer
 
             app.UseStaticFiles();
 
-
-
 			app.UseTraceIdMiddleware();
 			app.UseSessionIdMiddleware();
 
@@ -91,13 +89,9 @@ namespace WebLayer
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-               
-                
             });
 			app.AddNLogWeb();
-			loggerFactory.AddNLog();
-			
-			
+			loggerFactory.AddNLog();			
         }
     }
 }
