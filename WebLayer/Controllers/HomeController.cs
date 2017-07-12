@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using ApplicationCore.Seg.BL;
-using ApplicationCore.Seg.Services;
+using ApplicationCore.Seg.Interfaces;
 using Infrastructure;
 using Infrastructure.Logging;
 //using Infrastructure.Logging;

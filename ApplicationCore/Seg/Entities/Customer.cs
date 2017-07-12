@@ -1,6 +1,6 @@
 ﻿﻿using System;
 
-namespace ApplicationCore.SEG.Models
+namespace ApplicationCore.SEG.Entities
 {
     
 	public class Customer

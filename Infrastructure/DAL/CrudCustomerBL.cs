@@ -1,19 +1,8 @@
-﻿﻿﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using Npgsql;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using NLog;
-using Infrastructure;
-using ApplicationCore.SEG.Models;
-using ApplicationCore.Gen.Models;
-using ApplicationCore.Seg.Services;
-using Microsoft.AspNetCore.Http;
-using Infrastructure.Logging;
-using Infrastructure.DAL;
+﻿using System.Data;
+using ApplicationCore.SEG.Entities;
+using ApplicationCore.Utils.Entities;
+using ApplicationCore.Seg.Interfaces;
+using ApplicationCore.Utils.Interfaces;
 
 namespace ApplicationCore.Seg.BL
 {

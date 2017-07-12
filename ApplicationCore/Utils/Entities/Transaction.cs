@@ -1,6 +1,6 @@
 ﻿﻿using System;
 
-namespace ApplicationCore.Gen.Models
+namespace ApplicationCore.Utils.Entities
 {
     
 

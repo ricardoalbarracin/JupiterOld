@@ -1,8 +1,7 @@
-﻿using System;
-using System.Data;
-using ApplicationCore.Gen.Models;
+﻿using System.Data;
+using ApplicationCore.Utils.Entities;
 
-namespace Infrastructure.DAL
+namespace ApplicationCore.Utils.Interfaces
 {
     public interface IDapperAdapter
     {

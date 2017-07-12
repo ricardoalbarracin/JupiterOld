@@ -6,11 +6,12 @@
 
   <ItemGroup>
     <Folder Include="Seg\" />
-    <Folder Include="Seg\Models\" />
+    <Folder Include="Seg\Entities\" />
     <Folder Include="Seg\BL\" />
-    <Folder Include="Seg\Services\" />
-    <Folder Include="Gen\" />
-    <Folder Include="Gen\Models\" />
+    <Folder Include="Seg\Interfaces\" />
+    <Folder Include="Utils\" />
+    <Folder Include="Utils\Entities\" />
+    <Folder Include="Utils\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Class1.cs" />
@@ -22,5 +23,6 @@
   <ItemGroup>
     <PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.4.0-preview2-25405-01" />
+    <PackageReference Include="System.Data.Common" Version="4.3.0" />
   </ItemGroup>
 </Project>

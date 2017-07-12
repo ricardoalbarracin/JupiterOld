@@ -1,7 +1,4 @@
-﻿﻿using System;
-using System.Security.Principal;
-using Infrastructure.Logging;
-using Microsoft.AspNetCore.Http;
+﻿using ApplicationCore.Utils.Interfaces;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace WebLayer.Fliters

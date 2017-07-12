@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using ApplicationCore.Utils.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using NLog;

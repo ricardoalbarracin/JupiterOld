@@ -4,15 +4,14 @@ using Dapper;
 using Npgsql;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http;
-using ApplicationCore.Gen.Models;
-using Infrastructure.Logging;
-using Infrastructure.DAL;
+using ApplicationCore.Utils.Entities;
+using ApplicationCore.Utils.Interfaces;
 
 namespace Infrastructure
 {
     
 
-    public class DapperAdapter:IDapperAdapter
+    public class DapperAdapter: IDapperAdapter
     {
         private string _connectionString;
         IHttpContextAccessor _httpContextAccessor;
@@ -25,8 +24,6 @@ namespace Infrastructure
             _httpContextAccessor = httpContextAccessor;
             _logger = logger;
         }
-
-
 
 		public  Transaction Query<T>(string sql, object param = null,
 										  IDbTransaction transaction = null)
@@ -51,5 +48,7 @@ namespace Infrastructure
         {
             return new NpgsqlConnection(_connectionString);
         }
+
+
     }
 }

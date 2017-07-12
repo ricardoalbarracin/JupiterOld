@@ -1,7 +1,7 @@
 ﻿using System;
-using ApplicationCore.Gen.Models;
+using ApplicationCore.Utils.Entities;
 
-namespace ApplicationCore.Seg.Services
+namespace ApplicationCore.Seg.Interfaces
 {
     public interface ICrudCustomerBL
     {
