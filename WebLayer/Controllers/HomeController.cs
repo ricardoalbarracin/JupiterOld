@@ -27,12 +27,12 @@ namespace WebLayer.Controllers
 
         }
 
-        [HasPermissionAttribute("")]
+       
+		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
         public IActionResult Index()
         {
             HttpContext.Session.Set("dfs", new byte[0]);
-
-			var asaaa = _bl.GetListCustomer().Result[0];
+            var asaaa = _bl.GetListCustomer().Result[0];
             return View();
         }
 

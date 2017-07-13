@@ -6,11 +6,11 @@
 
   <ItemGroup>
     <Folder Include="Seg\" />
-    <Folder Include="Seg\Entities\" />
+    <Folder Include="Seg\Models\" />
     <Folder Include="Seg\BL\" />
     <Folder Include="Seg\Interfaces\" />
     <Folder Include="Utils\" />
-    <Folder Include="Utils\Entities\" />
+    <Folder Include="Utils\Models\" />
     <Folder Include="Utils\Interfaces\" />
   </ItemGroup>
   <ItemGroup>

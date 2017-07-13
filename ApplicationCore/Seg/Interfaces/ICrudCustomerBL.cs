@@ -1,5 +1,5 @@
 ﻿using System;
-using ApplicationCore.Utils.Entities;
+using ApplicationCore.Utils.Models;
 
 namespace ApplicationCore.Seg.Interfaces
 {

@@ -14,11 +14,12 @@ using NLog.Extensions.Logging;
 using NLog.Web;
 using WebLayer.Fliters;
 using WebLayer.Middleware;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace WebLayer
 {
 	
-
     public class Startup
     {
         public Startup(IHostingEnvironment env)
@@ -37,11 +38,14 @@ namespace WebLayer
         public void ConfigureServices(IServiceCollection services)
         {
 			// Add framework services.
+			var policy = new AuthorizationPolicyBuilder()
+					 .RequireAuthenticatedUser()
+					 .Build();
 			services.AddMvc(options =>
 			{
-				options.Filters.Add(typeof(FilterAllActions));
+                options.Filters.Add(typeof(FilterAllActions));
                 options.Filters.Add(typeof(GlobalExceptionFilter));
-
+				options.Filters.Add(new AuthorizeFilter(policy));
 			});
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 			services.AddSingleton(provider => Configuration);
@@ -50,7 +54,7 @@ namespace WebLayer
             services.AddScoped<IDapperAdapter, DapperAdapter>();
 
 			// Adds a default in-memory implementation of IDistributedCache.
-			//services.AddDistributedMemoryCache();
+			services.AddDistributedMemoryCache();
 			
             services.AddSession(options =>
 			{
@@ -82,6 +86,15 @@ namespace WebLayer
 			app.UseTraceIdMiddleware();
 			app.UseSessionIdMiddleware();
 
+			app.UseCookieAuthentication(new CookieAuthenticationOptions()
+			{
+				AuthenticationScheme = "JupiterCookieInstance",
+				LoginPath = new PathString("/Account/Loggin/"),
+				AccessDeniedPath = new PathString("/Account/Forbidden/"),
+				AutomaticAuthenticate = true,
+				AutomaticChallenge = true
+			});
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -89,7 +102,8 @@ namespace WebLayer
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 			app.AddNLogWeb();
-			loggerFactory.AddNLog();			
+			loggerFactory.AddNLog();
+
         }
     }
 }
