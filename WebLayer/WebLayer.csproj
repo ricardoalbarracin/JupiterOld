@@ -34,5 +34,6 @@
   <ItemGroup>
     <Folder Include="Middlewares\" />
     <Folder Include="Fliters\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
 </Project>

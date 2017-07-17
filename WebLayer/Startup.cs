@@ -37,10 +37,10 @@ namespace WebLayer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-			// Add framework services.
-			var policy = new AuthorizationPolicyBuilder()
-					 .RequireAuthenticatedUser()
-					 .Build();
+            // Add framework services.
+            var policy = new AuthorizationPolicyBuilder()
+                     .RequireAuthenticatedUser()
+                .Build();
 			services.AddMvc(options =>
 			{
                 options.Filters.Add(typeof(FilterAllActions));
@@ -89,7 +89,7 @@ namespace WebLayer
 			app.UseCookieAuthentication(new CookieAuthenticationOptions()
 			{
 				AuthenticationScheme = "JupiterCookieInstance",
-				LoginPath = new PathString("/Account/Loggin/"),
+				LoginPath = new PathString("/Account/Login/"),
 				AccessDeniedPath = new PathString("/Account/Forbidden/"),
 				AutomaticAuthenticate = true,
 				AutomaticChallenge = true

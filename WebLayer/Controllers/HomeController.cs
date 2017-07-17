@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using ApplicationCore.Seg.BL;
-using ApplicationCore.Seg.Interfaces;
-using Infrastructure;
-using Infrastructure.Logging;
-//using Infrastructure.Logging;
+﻿using ApplicationCore.Seg.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using WebLayer.Fliters;
+
 
 namespace WebLayer.Controllers
 {
@@ -24,11 +13,8 @@ namespace WebLayer.Controllers
         public HomeController (ICrudCustomerBL bl)
         {
             _bl = bl;
-
         }
-
-       
-		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
+		
         public IActionResult Index()
         {
             HttpContext.Session.Set("dfs", new byte[0]);
