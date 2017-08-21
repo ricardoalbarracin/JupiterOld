@@ -49,7 +49,7 @@ namespace WebLayer
 			});
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 			services.AddSingleton(provider => Configuration);
-            services.AddScoped<ICrudCustomerBL, CrudCustomerBL>();
+            services.AddScoped<IAccountBL, AccountBL>();
             services.AddScoped<ILoggerAdapter, LoggerAdapter>();
             services.AddScoped<IDapperAdapter, DapperAdapter>();
 
@@ -60,6 +60,7 @@ namespace WebLayer
 			{
                 options.IdleTimeout = TimeSpan.FromDays(1);
 			});
+
 			
 		}
 
@@ -88,7 +89,7 @@ namespace WebLayer
 
 			app.UseCookieAuthentication(new CookieAuthenticationOptions()
 			{
-				AuthenticationScheme = "JupiterCookieInstance",
+				AuthenticationScheme = "JupiterCookieAuthenticationScheme",
 				LoginPath = new PathString("/Account/Login/"),
 				AccessDeniedPath = new PathString("/Account/Forbidden/"),
 				AutomaticAuthenticate = true,

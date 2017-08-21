@@ -3,7 +3,7 @@
 namespace ApplicationCore.SEG.Models
 {
     
-	public class Customer
+	public class Usuario
 	{
 
 		public long Id
@@ -11,25 +11,30 @@ namespace ApplicationCore.SEG.Models
 			get;
 			set;
 		}
-		public string FirstName
+		
+        public string NombreUsuario
 		{
 			get;
 			set;
 		}
-		public string LastName
+
+		public long PersonaId
 		{
 			get;
 			set;
 		}
-		public string Email
+
+		public string Clave
 		{
 			get;
 			set;
 		}
-		public DateTime CreateTime
+
+		public string Estado
 		{
 			get;
 			set;
 		}
+		
 	}
 }

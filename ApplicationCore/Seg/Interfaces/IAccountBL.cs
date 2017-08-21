@@ -3,9 +3,9 @@ using ApplicationCore.Utils.Models;
 
 namespace ApplicationCore.Seg.Interfaces
 {
-    public interface ICrudCustomerBL
+    public interface IAccountBL
     {
-        Transaction GetListCustomer();
+        Transaction ObtenerUsuario(string nombreUsuario);
     }
 		
 }

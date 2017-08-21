@@ -1,11 +1,11 @@
 ﻿﻿using System;
 using System.Data;
 using Dapper;
-using Npgsql;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http;
 using ApplicationCore.Utils.Models;
 using ApplicationCore.Utils.Interfaces;
+using System.Data.SqlClient;
 
 namespace Infrastructure
 {
@@ -20,12 +20,12 @@ namespace Infrastructure
        
         public DapperAdapter(IConfigurationRoot configuration, ILoggerAdapter logger)
         {
-            _connectionString = configuration.GetConnectionString("DefaultConnection");
+            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+            _connectionString = configuration.GetConnectionString("SQLServerConnection");
             _logger = logger;
         }
 
-		public  Transaction Query<T>(string sql, object param = null,
-										  IDbTransaction transaction = null)
+		public  Transaction Query<T>(string sql, object param = null, IDbTransaction transaction = null)
 		{
             Transaction trans = new Transaction();
             try
@@ -44,7 +44,7 @@ namespace Infrastructure
 
         public IDbConnection GetConnection()
         {
-            return new NpgsqlConnection(_connectionString);
+            return new SqlConnection(_connectionString);
         }
 
 
