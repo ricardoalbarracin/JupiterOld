@@ -31,7 +31,7 @@ namespace ApplicationCore.Seg.BL
 	                NombreUsuario = nombreUsuario
 	            };
                 var resultDB = _IDapperAdapter.Query<Usuario>("exec SEG.GetUsuario @NombreUsuario = @NombreUsuario;", u);
-                if (resultDB.State == TransState.success)
+                if (resultDB.State == TransState.success && resultDB.Result.Count>0)
                 {
                     result.Result = resultDB.Result[0];
                     result.State = TransState.success;

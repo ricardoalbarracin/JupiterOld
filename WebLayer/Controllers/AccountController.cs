@@ -4,6 +4,8 @@ using ApplicationCore.Utils.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using System.Globalization;
 
 namespace WebLayer.Controllers
 {
@@ -14,17 +16,23 @@ namespace WebLayer.Controllers
         public AccountController(IAccountBL bl)
         {
             _bl = bl;
-			
-
-
+            
         }
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("es-ES");
+            CultureInfo.CurrentUICulture = CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("es-ES");
+            CultureInfo.CurrentCulture = CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("es-ES");
 
-		[AllowAnonymous]
+            base.OnActionExecuting(context);
+        }
+        [AllowAnonymous]
         public IActionResult Login(string ReturnUrl)
 		{
 			return View();
 		}
 
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Login(Usuario usuario)
         {

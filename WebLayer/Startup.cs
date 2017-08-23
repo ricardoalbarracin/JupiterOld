@@ -55,7 +55,10 @@ namespace WebLayer
 
 			// Adds a default in-memory implementation of IDistributedCache.
 			services.AddDistributedMemoryCache();
-			
+            
+            // Add Kendo UI services to the services container
+            services.AddKendo();
+
             services.AddSession(options =>
 			{
                 options.IdleTimeout = TimeSpan.FromDays(1);
