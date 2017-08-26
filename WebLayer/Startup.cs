@@ -57,7 +57,7 @@ namespace WebLayer
 			services.AddDistributedMemoryCache();
             
             // Add Kendo UI services to the services container
-            services.AddKendo();
+            //services.AddKendo();
 
             services.AddSession(options =>
 			{
