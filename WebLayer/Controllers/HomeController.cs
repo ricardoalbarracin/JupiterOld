@@ -27,6 +27,13 @@ namespace WebLayer.Controllers
             ViewData["Message"] = "Your application description page.";
             return View();
         }
+        public IActionResult InsEstadoAfiliacion()
+        {
+
+            return PartialView();
+        }
+
+        
 
         public IActionResult Contact()
         {

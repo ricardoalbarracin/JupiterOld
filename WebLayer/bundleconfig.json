@@ -9,9 +9,38 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/js/site.min.js",
+    "outputFileName": "wwwroot/js/siteAll.min.js",
     "inputFiles": [
-      "wwwroot/js/site.js"
+      "wwwroot/js/Site.js",
+      "wwwroot/js/Presite.js"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    // Optionally generate .map file
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/css/kendo.min.css",
+    // An array of relative input file paths. Globbing patterns supported
+    "inputFiles": [
+      "wwwroot/lib/kendo/css/web/kendo.bootstrap.min.css",
+      "wwwroot/lib/kendo/css/web/kendo.common-bootstrap.min.css",
+      "wwwroot/lib/kendo/css/web/kendo.bootstrap.min.css",
+      "wwwroot/lib/kendo/css/web/kendo.bootstrap.mobile.min.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Kendo.min.js",
+    "inputFiles": [
+      "wwwroot/lib/kendo/js/jquery.min.js",
+      "wwwroot/lib/kendo/js/jszip.min.js",
+      "wwwroot/lib/kendo/js/kendo.all.min.js",
+      "wwwroot/lib/kendo/js/kendo.aspnetmvc.min.js",
+      "wwwroot/lib/kendo/js/kendo.timezones.min.js",
+      "wwwroot/lib/kendo/js/kendo.messages.es-ES.min.js"
     ],
     // Optionally specify minification options
     "minify": {
