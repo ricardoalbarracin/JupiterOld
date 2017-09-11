@@ -26,10 +26,14 @@
        <script src="/lib/kendo/js/jquery.min.js"></script>
         <script src="/js/jquery.unobtrusive-ajax.js"></script>
        <script src="/js/particles.js"></script>
-       <script src="~/lib/pace/pace.min.js"></script>
+
        <link rel="stylesheet" href="~/lib/pace/flash.css" />
        <link rel="stylesheet" href="~/css/kendo.min.css" asp-append-version="true" />
        <script src="~/js/Kendo.min.js" asp-append-version="true"></script>
+		<link href="/css/style.min.css" rel="stylesheet" />
+    <link href="/css/style-responsive.min.css" rel="stylesheet" />
+    <link href="/css/default.css" rel="stylesheet" id="theme">
+		<link rel="stylesheet" href="/css/animate.min.css" />
       @Html.Raw(JavaScriptSnippet.FullScript)
        
    </head>
@@ -61,7 +65,7 @@
       @RenderSection("Scripts", required: false)
        <script>
            // On page start
-           handlePace();
+
 
            // On page load
            $(document).ready(function () {

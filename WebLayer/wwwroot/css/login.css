@@ -1,7 +1,7 @@
 ﻿
 body, html {
     height: 100%;
-    background: #0E3766;
+    background: #0E3766!important;
     margin: 0;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -126,4 +126,13 @@ canvas {
 .nopadding {
     padding: 0 !important;
     margin: 0 !important;
+}
+.loginForm{
+    padding-top:90px;
+}
+.animated {
+    -webkit-animation-duration: 2s !important;
+    animation-duration: 2s !important;
+    -webkit-animation-fill-mode: both !important;
+    animation-fill-mode: both !important;
 }

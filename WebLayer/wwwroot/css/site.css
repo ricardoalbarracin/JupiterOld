@@ -1250,7 +1250,7 @@ body {
 }
 
 #loader {
-    background: rgb(246, 246, 246);
+    background: #e4e7e8;
     position: absolute;
     z-index: 100;
 }

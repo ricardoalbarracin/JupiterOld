@@ -13,7 +13,7 @@
   </ItemGroup>
   <ItemGroup>
 	<PackageReference Include="BuildBundlerMinifier" Version="2.4.337" />
-	<PackageReference Include="Telerik.UI.for.AspNet.Core" Version="2017.2.621" />
+	
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
@@ -42,5 +42,6 @@
     <Folder Include="Middlewares\" />
     <Folder Include="Fliters\" />
     <Folder Include="Views\Account\" />
+    <Folder Include="wwwroot\lib\slimscroll\" />
   </ItemGroup>
 </Project>
