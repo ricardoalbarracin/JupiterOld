@@ -7,6 +7,10 @@
   <PropertyGroup>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\mm-vertical.css" />
+  </ItemGroup>
   <ItemGroup>
 	<PackageReference Include="BuildBundlerMinifier" Version="2.4.337" />
 	<PackageReference Include="Telerik.UI.for.AspNet.Core" Version="2017.2.621" />
